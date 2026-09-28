@@ -1,0 +1,69 @@
+{
+  "spg_version": "0.1-draft",
+  "program": {
+    "name": "TemperatureFanController",
+    "inputs": [
+      {
+        "id": "temperature",
+        "type": {
+          "scalar": "f32",
+          "unit": "degC"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "id": "fan_speed",
+        "type": {
+          "scalar": "u8",
+          "unit": "percent"
+        }
+      }
+    ],
+    "nodes": [
+      {
+        "id": "threshold_60",
+        "kind": "literal",
+        "value": 60.0,
+        "type": {
+          "scalar": "f32",
+          "unit": "degC"
+        }
+      },
+      {
+        "id": "threshold_40",
+        "kind": "literal",
+        "value": 40.0,
+        "type": {
+          "scalar": "f32",
+          "unit": "degC"
+        }
+      },
+      {
+        "id": "is_hot",
+        "kind": "compare",
+        "op": "gt",
+        "inputs": ["temperature", "threshold_60"]
+      },
+      {
+        "id": "is_warm",
+        "kind": "compare",
+        "op": "gt",
+        "inputs": ["temperature", "threshold_40"]
+      }
+    ],
+    "constraints": [
+      {
+        "kind": "range",
+        "subject": "fan_speed",
+        "min": 0,
+        "max": 100,
+        "unit": "percent"
+      }
+    ],
+    "notes": [
+      "Draft example only. The SPG schema is not standardized yet.",
+      "Control edges and output selection are intentionally left for the first schema design issue."
+    ]
+  }
+}
