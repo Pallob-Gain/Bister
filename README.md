@@ -172,6 +172,7 @@ git clone https://github.com/Pallob-Gain/Bister.git
 cd Bister
 
 cargo check --workspace
+cargo fmt --all --check
 cargo test --workspace
 cargo run -p bister -- check examples/temperature-fan/fan-controller.spg.json
 ```
