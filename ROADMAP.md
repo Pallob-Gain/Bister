@@ -24,6 +24,10 @@ Executable program
 
 The project intentionally proves the deterministic compiler core before making AI mandatory.
 
+## Implementation stack
+
+Bister core components are built with **Rust and/or C++**. Rust is the preferred default; C++ is used where native compiler infrastructure or existing libraries make it the better engineering choice. **Web technologies are reserved primarily for the interactive flowchart/editor and visualization layer.** The core compiler must remain independently usable without a browser stack.
+
 ## Phase 0 — Project foundation
 
 **Status:** In progress
@@ -79,6 +83,7 @@ Executable
 Primary deliverables:
 
 - SPG schema v0.1;
+- Rust/C++ compiler workspace;
 - parser and validator;
 - minimal Bister IR v0.1;
 - one backend;
@@ -155,6 +160,8 @@ Deliverables:
 ## Phase 4 — Visual programming environment
 
 **Goal:** make the semantic program understandable and editable without manually editing graph serialization.
+
+The editor may use TypeScript/JavaScript, HTML/CSS, SVG/Canvas, WebAssembly, or an appropriate web UI framework while communicating with the Rust/C++ compiler core through a stable interface.
 
 The editor should expose:
 
