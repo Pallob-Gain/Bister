@@ -1,0 +1,28 @@
+# Build artifacts
+build/
+dist/
+target/
+out/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+
+# Model caches / generated experiments
+.cache/
+models/
+artifacts/
