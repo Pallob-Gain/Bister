@@ -12,7 +12,8 @@ Please read:
 - [Language design](docs/language-design.md)
 - [Semantic Program Graph](docs/semantic-program-graph.md)
 - [Bister IR](docs/bister-ir.md)
-- [Roadmap](docs/roadmap.md)
+- [Technology stack](docs/technology-stack.md)
+- [Roadmap](ROADMAP.md)
 
 ## Design-first development
 
@@ -64,6 +65,17 @@ We plan to organize design work using labels such as:
 - `type:bug`
 - `type:experiment`
 - `good first issue`
+
+## Implementation language policy
+
+First-party implementation code should stay within the project's approved stack:
+
+- Rust is preferred for compiler and systems code.
+- C++ is allowed when technically justified.
+- TypeScript/JavaScript and other web technologies are appropriate for interactive UI/editor work.
+- Introducing another implementation language requires an architecture/design discussion first.
+
+Do not introduce a browser or Node.js dependency into the deterministic compiler core solely for convenience.
 
 ## Pull requests
 
