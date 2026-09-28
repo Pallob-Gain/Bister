@@ -163,6 +163,33 @@ Bister intentionally uses a narrow implementation stack:
 
 The deterministic compiler core must remain usable without a browser, Node.js, Electron, or any web framework. See [Technology stack](docs/technology-stack.md).
 
+## Getting started
+
+Bister's deterministic core is a Rust workspace.
+
+```bash
+git clone https://github.com/Pallob-Gain/Bister.git
+cd Bister
+
+cargo check --workspace
+cargo test --workspace
+cargo run -p bister -- check examples/temperature-fan/fan-controller.spg.json
+```
+
+The current CLI is intentionally minimal while SPG v0.1 and Bister IR v0.1 are being designed.
+
+### Workspace
+
+```text
+crates/
+├── bister-spg/       Semantic Program Graph + validation
+├── bister-ir/        Deterministic intermediate representation
+├── bister-compiler/  Compiler pipeline
+└── bister-cli/       bister command-line tool
+```
+
+CI runs formatting, `cargo check`, Clippy, and the test suite on pushes and pull requests.
+
 ## Repository map
 
 ```text
@@ -204,7 +231,6 @@ Start here:
 - [Verification strategy](docs/verification.md)
 - [Technology stack](docs/technology-stack.md)
 - [Project roadmap](ROADMAP.md)
-- [Detailed roadmap notes](docs/roadmap.md)
 - [Contributing](CONTRIBUTING.md)
 
 ## Project status
