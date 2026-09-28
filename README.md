@@ -1,5 +1,11 @@
 # Bister
 
+<p align="center">
+  <img src="assets/bister-logo.svg" alt="Bister logo — semantic flow transformed into machine representation" width="360" />
+</p>
+
+<p align="center"><strong>From human algorithms to machine execution.</strong></p>
+
 **An AI-native programming language for expressing algorithms, intent, and constraints instead of implementation syntax.**
 
 > **Write the logic. Let the machine write the code.**
@@ -155,6 +161,9 @@ Bister/
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
 ├── SECURITY.md
+├── ROADMAP.md
+├── assets/
+│   └── bister-logo.svg
 ├── docs/
 │   ├── architecture.md
 │   ├── language-design.md
@@ -182,7 +191,8 @@ Start here:
 - [Bister IR](docs/bister-ir.md)
 - [AI integration](docs/ai-integration.md)
 - [Verification strategy](docs/verification.md)
-- [Roadmap](docs/roadmap.md)
+- [Project roadmap](ROADMAP.md)
+- [Detailed roadmap notes](docs/roadmap.md)
 - [Contributing](CONTRIBUTING.md)
 
 ## Project status
@@ -190,6 +200,22 @@ Start here:
 **Status: concept / early research / pre-alpha**
 
 No Bister syntax, IR version, compiler API, or execution model should be considered stable yet. Early contributions should favor explicit design proposals, prototypes, tests, and measurable trade-offs over premature standardization.
+
+## Roadmap at a glance
+
+| Phase | Focus | Exit condition |
+| --- | --- | --- |
+| **0 — Foundation** | Architecture, terminology, SPG/IR concepts, contribution process | Shared design vocabulary and project boundaries |
+| **1 — Deterministic core** | SPG → validator → Bister IR → backend | Small programs compile without AI or network access |
+| **2 — Constraints & effects** | Units, state, failures, resources, runtime checks | Requirements survive lowering and invalid semantics are rejected |
+| **3 — AI synthesis** | Natural language → structured semantic proposals | AI proposes; deterministic validation remains authoritative |
+| **4 — Visual editor** | Graph-based authoring, diagnostics, semantic review | A program can be built without editing SPG JSON |
+| **5 — Embedded target** | GPIO, ADC, PWM, timers, buses, deadlines | Bister controls real hardware with inspectable resource mapping |
+| **6 — Verification** | SMT, symbolic execution, timing/resource analysis | Selected requirements are provable or explicitly enforced |
+| **7 — Stabilization** | Specification, modules, tooling, ecosystem | External projects can target a versioned Bister toolchain |
+
+See the full [Bister roadmap](ROADMAP.md).
+
 
 ## Research questions
 
