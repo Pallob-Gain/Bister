@@ -60,6 +60,7 @@ Bister does **not** ask an LLM to emit arbitrary executable bytes. AI is a reaso
 5. **Inspectable** — developers should be able to inspect the semantic graph, IR, generated implementation choices, and diagnostics.
 6. **Explicit constraints** — timing, safety, resource, concurrency, and failure requirements should become first-class program semantics.
 7. **Reproducible builds** — finalized semantic input and compiler configuration should produce deterministic downstream artifacts.
+8. **Focused implementation stack** — Bister core development uses Rust and C++; web technologies are reserved primarily for interactive authoring and visualization.
 
 ## Example concept
 
@@ -152,6 +153,16 @@ The first prototype should remain intentionally small:
 
 Embedded/control software is a strong early proving ground because timing, state, resources, safety constraints, and hardware interaction can be modeled explicitly.
 
+## Implementation technologies
+
+Bister intentionally uses a narrow implementation stack:
+
+- **Rust** — preferred for compiler, IR, validation, CLI, and systems components;
+- **C++** — approved where native compiler infrastructure, LLVM integration, performance, or existing libraries justify it;
+- **Web technologies** — used for the optional interactive flowchart/editor and related visualization interfaces.
+
+The deterministic compiler core must remain usable without a browser, Node.js, Electron, or any web framework. See [Technology stack](docs/technology-stack.md).
+
 ## Repository map
 
 ```text
@@ -191,6 +202,7 @@ Start here:
 - [Bister IR](docs/bister-ir.md)
 - [AI integration](docs/ai-integration.md)
 - [Verification strategy](docs/verification.md)
+- [Technology stack](docs/technology-stack.md)
 - [Project roadmap](ROADMAP.md)
 - [Detailed roadmap notes](docs/roadmap.md)
 - [Contributing](CONTRIBUTING.md)
