@@ -1,14 +1,17 @@
 # Compiler
 
-Future deterministic Bister compiler implementation.
+Bister's active compiler implementation lives in the root Rust workspace under `crates/`.
 
-Planned responsibilities:
+```text
+crates/
+├── bister-spg/       Semantic Program Graph types and validation
+├── bister-ir/        Deterministic Bister intermediate representation
+├── bister-compiler/  Compiler pipeline
+└── bister-cli/       `bister` command-line interface
+```
 
-- SPG parsing and validation;
-- semantic normalization;
-- Bister IR construction;
-- deterministic compiler passes;
-- backend emission;
-- diagnostics.
+This directory is retained as an architectural namespace for future native compiler support files if needed, such as a narrow C++/LLVM bridge.
 
-The first implementation should prove the deterministic SPG-to-executable path before introducing AI as a dependency.
+Rust is the default implementation language. C++ should only be added when a concrete native/compiler-infrastructure advantage justifies the additional FFI boundary.
+
+See [Technology Stack](../docs/technology-stack.md) and [ADR 0001](../docs/adr/0001-implementation-stack.md).
