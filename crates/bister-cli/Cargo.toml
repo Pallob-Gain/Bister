@@ -1,0 +1,20 @@
+[package]
+name = "bister"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "bister"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+bister-compiler = { path = "../bister-compiler" }
+bister-spg = { path = "../bister-spg" }
+serde_json.workspace = true
+
+[lints]
+workspace = true
