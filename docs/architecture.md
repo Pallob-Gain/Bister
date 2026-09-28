@@ -55,7 +55,31 @@ Backend IR
 Executable artifact
 ```
 
-## 3. Front ends
+## 3. Implementation technology boundary
+
+Bister keeps the core toolchain separate from presentation technology.
+
+```text
+Interactive Flowchart / Editor
+     Web technology
+          │
+          ▼
+   SPG / compiler API
+          │
+          ▼
+Bister Core — Rust / C++
+          │
+          ▼
+ LLVM / WASM / Native
+```
+
+Rust is the preferred default for new compiler and systems components. C++ is allowed where it provides a concrete advantage, such as direct compiler infrastructure integration or native libraries. Web technologies are appropriate for the interactive flowchart/editor layer, but they must not define program semantics.
+
+The compiler must remain usable as a native CLI/library without requiring a browser, Node.js, Electron, or a web framework.
+
+See [technology-stack.md](technology-stack.md).
+
+## 4. Front ends
 
 Bister should permit several ways to author the same semantics.
 
@@ -91,7 +115,7 @@ A developer may describe intent using natural language. The model converts that 
 
 The model output is never accepted merely because it is syntactically well formed. Missing or ambiguous semantics must be surfaced for review.
 
-## 4. Semantic Program Graph
+## 5. Semantic Program Graph
 
 The SPG is the source-level formal representation.
 
@@ -110,7 +134,7 @@ It describes what the program means using typed nodes and relationships, includi
 
 See [semantic-program-graph.md](semantic-program-graph.md).
 
-## 5. AI reasoning layer
+## 6. AI reasoning layer
 
 AI is used where conventional deterministic compilation has insufficient information to choose or synthesize an implementation.
 
@@ -130,7 +154,7 @@ Every AI-derived semantic decision should eventually be one of:
 2. rejected;
 3. marked unresolved and sent back to the developer.
 
-## 6. Bister IR
+## 7. Bister IR
 
 Bister IR is the deterministic compiler boundary.
 
@@ -145,7 +169,7 @@ By the time a program reaches Bister IR:
 
 See [bister-ir.md](bister-ir.md).
 
-## 7. Verification
+## 8. Verification
 
 Verification occurs at several levels:
 
@@ -167,7 +191,7 @@ tests / simulation
 
 See [verification.md](verification.md).
 
-## 8. Backend strategy
+## 9. Backend strategy
 
 The first practical backend should use mature compiler infrastructure instead of implementing machine code generation from scratch.
 
@@ -185,7 +209,7 @@ native executable
 
 A WebAssembly backend is also attractive because it provides a constrained portable execution target.
 
-## 9. Runtime
+## 10. Runtime
 
 Bister should avoid requiring a heavy runtime for all targets.
 
@@ -200,7 +224,7 @@ Runtime services may be optional and target dependent, for example:
 
 The initial prototype should favor a minimal runtime.
 
-## 10. Hardware targets
+## 11. Hardware targets
 
 Embedded systems are a useful early target because the semantic language can directly model:
 
@@ -216,7 +240,7 @@ Embedded systems are a useful early target because the semantic language can dir
 
 Hardware descriptions should be separate from application intent so that the same semantic program can be remapped where possible.
 
-## 11. Build reproducibility
+## 12. Build reproducibility
 
 AI inference is probabilistic, so Bister must distinguish between:
 
@@ -230,7 +254,7 @@ Once the accepted SPG/Bister IR and configuration are fixed, downstream compilat
 
 This distinction is essential for reproducible builds, review, caching, and certification.
 
-## 12. Long-term architecture principle
+## 13. Long-term architecture principle
 
 Bister should remain usable even if today's LLM architectures are replaced.
 
